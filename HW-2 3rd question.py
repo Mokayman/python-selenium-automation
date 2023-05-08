@@ -13,21 +13,11 @@ driver = webdriver.Chrome(service=service)
 driver.maximize_window()
 
 # open the url
-driver.get('https://www.google.com/')
-
-# populate search field
-search = driver.find_element(By.NAME, 'q')
-search.clear()
-search.send_keys('table')
-
-# wait for 4 sec
-sleep(4)
-
-# click search button
-driver.find_element(By.NAME, 'btnK').click()
-
-# verify search results
-assert 'table1' in driver.current_url.lower(), f"Expected query not in {driver.current_url.lower()}"
-print('Test Passed')
-
+driver.get('https://www.amazon.com/')
+driver.find_element(By.XPATH, "//span[text()='Returns']").click()
+expected_result_1 = "Sign in"
+actual_result_1 = driver.find_element(By.XPATH, "// h1 [ @ class = 'a-spacing-small']").text
+driver.find_element(By.XPATH, "//input[@type='email']")
+assert expected_result_1 == actual_result_1, f"expected {expected_result_1} but got {actual_result_1}"
+print("Test passed")
 driver.quit()
