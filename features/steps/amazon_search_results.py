@@ -27,3 +27,4 @@ def verify_image_and_product_name(context):
         # print(f'* {product_name}')
         assert product_name != "", "No product name found"
         assert product.find_element(*ALL_SEARCH_RESULTS_IMAGE).is_displayed(), "image not found"
+#

@@ -15,3 +15,4 @@ Feature: Amazon Search tests
     Given Open amazon main page
     When Search for hat
     Then Verify search results has image and product name
+#

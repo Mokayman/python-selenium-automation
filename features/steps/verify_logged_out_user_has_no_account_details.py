@@ -20,7 +20,7 @@ def verify_sign_in_text(context):
     actual_result = context.driver.find_element(By.XPATH, "// h1 [ @ class = 'a-spacing-small']").text
     expected_result = "Sign in"
     assert expected_result == actual_result, f"expected {expected_result} but got {actual_result}"
-
+#
 
 @then("Verify email field is shown on the page")
 def verify_email_field(context):

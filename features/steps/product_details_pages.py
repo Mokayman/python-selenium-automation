@@ -36,5 +36,5 @@ def users_can_select_colors(context):
     assert actual_colors == expected_colors, \
         f'Expected colors {expected_colors} did not match actual {actual_colors}'
 
-
+#
 
