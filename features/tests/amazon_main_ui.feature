@@ -16,3 +16,9 @@ Feature: Tests for main page UI
     Given Open amazon main page
     When Click on Customer Service menu
     Then verify Customer Service’s page UI elements are present
+
+
+  Scenario: Amazon Popup sign in
+    Given Open amazon main page
+    When Click sign in
+    Then Verify 'Sign in' text is shown on the page
