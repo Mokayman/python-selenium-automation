@@ -6,9 +6,9 @@ ADD_TO_CART_BTN = (By.ID, "add-to-cart-button")
 COLOR_OPTIONS = (By.CSS_SELECTOR, "#variation_color_name li")
 CURRENT_COLOR = (By.CSS_SELECTOR, "#variation_color_name .selection")
 
-@given('amazon {product_id} details page')
+@given('amazon product {product_id} details page')
 def open_product_page(context, product_id):
-    context.driver.get(f'https://www.amazon.com/dp/{product_id}')
+    original_window = context.driver.get(f'https://www.amazon.com/dp/{product_id}')
 
 
 @when('store product name')
@@ -23,8 +23,8 @@ def add_to_cart(context):
 @then('Varify users click through colors')
 def users_can_select_colors(context):
     expected_colors = ['01 Black', '02 Navy', '03 White', '04 Wine Red', '05 Light Gray',
-                       '06 Khaki', 'Long Sleeve Khaki', 'Long Sleeve Light Gray', 'Long Sleeve Navy',
-                       'Long Sleeve Wine Red', 'Long Sleeve Black', 'Long Sleeve White']
+                       '06 Khaki', 'Long Sleeve Black', 'Long Sleeve Light Gray', 'Long Sleeve Navy',
+                       'Long Sleeve Wine Red', 'Long Sleeve Khaki', 'Long Sleeve White']
     actual_colors = []
     colors = context.driver.find_elements(*COLOR_OPTIONS)
 
