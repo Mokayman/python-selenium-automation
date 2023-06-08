@@ -37,4 +37,4 @@ def click_add_to_cart(context):
 @then('Verify shopping cart contains one item')
 def varify_cart_item(context):
     items_on_cart = context.driver.find_element(By.ID, "nav-cart-count").text
-    assert items_on_cart == '1', "items on cart are different than one"
+    assert items_on_cart == "1", "items on cart is more than one"

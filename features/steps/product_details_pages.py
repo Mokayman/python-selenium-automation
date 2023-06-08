@@ -8,7 +8,7 @@ CURRENT_COLOR = (By.CSS_SELECTOR, "#variation_color_name .selection")
 
 @given('amazon product {product_id} details page')
 def open_product_page(context, product_id):
-    original_window = context.driver.get(f'https://www.amazon.com/dp/{product_id}')
+    context.driver.get(f'https://www.amazon.com/dp/{product_id}')
 
 
 @when('store product name')
