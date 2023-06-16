@@ -11,9 +11,10 @@ EMAIL_FIELD = (By.XPATH, "//input[@type='email']")
 SIGNIN_BTN = (By.ID, "a-autoid-0")
 
 
-@when('click on returns_and_orders')
-def click_on_returns(context):
-    context.driver.find_element(*RETURN_BTN).click()
+# @when('click on returns_and_orders')
+# def click_on_returns(context):
+#     context.driver.find_element(*RETURN_BTN).click()
+#     # context.app.header.click_on_returns()
 
 
 
@@ -24,16 +25,16 @@ def click_cart_icon(context):
 
 @then("Verify 'Sign in' text is shown on the page")
 def verify_sign_in_text(context):
-    context.driver.wait.until(EC.url_contains('https://www.amazon.com/ap/signin?'))
-    actual_result = context.driver.find_element(SIGNIN_TEXT).text
-    expected_result = "Sign in"
-    assert expected_result == actual_result, f"expected {expected_result} but got {actual_result}"
-#
+    # context.driver.wait.until(EC.url_contains('https://www.amazon.com/ap/signin?'))
+    # actual_result = context.driver.find_element(SIGNIN_TEXT).text
+    # expected_result = "Sign in"
+    # assert expected_result == actual_result, f"expected {expected_result} but got {actual_result}"
+    context.app.signin_page.verify_sign_in_text()
 
 @then("Verify email field is shown on the page")
 def verify_email_field(context):
-    assert context.driver.find_element(*EMAIL_FIELD).is_displayed(), "email field not shown"
-
+    # assert context.driver.find_element(*EMAIL_FIELD).is_displayed(), "email field not shown"
+    context.app.signin_page.verify_email_field()
 
 
 

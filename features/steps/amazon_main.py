@@ -10,14 +10,10 @@ FOOTER_LINKS = (By.CSS_SELECTOR, '.navFooterMoreOnAmazon a')
 SIGN_IN_POPUP_BTN = (By.ID, "nav-signin-tooltip")
 
 @given('Open amazon main page')
-def open_amazon(context):
-    context.driver.get('https://www.amazon.com/')
+def open_main_page(context):
+    # context.driver.get('https://www.amazon.com/')
+    context.app.main_page.open_main_page()
 
-
-@when('Search for {search_query}')
-def search_amazon(context, search_query):
-    context.driver.find_element(*SEARCH_FILED).send_keys(search_query)
-    context.driver.find_element(*SEARCH_BTN).click()
 
 
 @when('Click Orders')
@@ -27,7 +23,7 @@ def click_orders(context):
 
 @when('Verify Orders btn present')
 def click_orders(context):
-    context.driver.find_element(*ORDERS_BTN)
+    context.driver.find_element(*ORDERS_BTN).is_displayed()
 
 
 @then('Verify there are {expected_amount} links')
@@ -40,12 +36,6 @@ def verify_link_count(context, expected_amount):
 
     # 36 == 36
     assert links_count == expected_amount, f'Expected {expected_amount} links, but got {links_count}'
-
-
-@when('Populate with {item} and click search')
-def populate_search_bar(context, item):
-    context.driver.find_element(*SEARCH_FILED).send_keys(item)
-    context.driver.find_element(*SEARCH_BTN).click()
 
 
 @when('Click sign in')

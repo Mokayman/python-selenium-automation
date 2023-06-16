@@ -15,7 +15,7 @@ Feature: amazon cart
 
   Scenario: adding item to amazon cart
     Given Open amazon main page
-    When Populate with ps5 and click search
+    When Populate with canon and click search
     And click on the first product
     And store product name
     And click on add 2 cart

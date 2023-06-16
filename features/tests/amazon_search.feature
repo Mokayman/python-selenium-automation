@@ -15,4 +15,9 @@ Feature: Amazon Search tests
     Given Open amazon main page
     When Search for hat
     Then Verify search results has image and product name
-#
+
+  Scenario: 'Your Shopping Cart is empty' shown if no product added
+    Given Open amazon main page
+    When Click on cart icon
+    Then Verify 'Your Amazon Cart is empty'. text present
+

@@ -24,5 +24,6 @@ def verify_privacy_page(context):
 def close_switch_window(context):
     context.driver.close()
     context.driver.switch_to.window(context.all_windows[0])
-    context.driver.wait.until(EC.url_contains('https://www.amazon.com/gp/help/customer/display.html/')), "page not found"
+    context.driver.wait.until(EC.url_contains('https://www.amazon.com/gp/help/customer/display.html/')),\
+        "page not found"
 

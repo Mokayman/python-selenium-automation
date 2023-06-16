@@ -1,10 +1,12 @@
 from selenium.webdriver.common.by import By
 from behave import given, when, then
+from selenium.webdriver.support import expected_conditions as EC
 
 PRODUCT_NAME = (By.ID, "productTitle")
 ADD_TO_CART_BTN = (By.ID, "add-to-cart-button")
 COLOR_OPTIONS = (By.CSS_SELECTOR, "#variation_color_name li")
 CURRENT_COLOR = (By.CSS_SELECTOR, "#variation_color_name .selection")
+NO_PROTECTION_BTN = (By.ID, "attachSiNoCoverage")
 
 @given('amazon product {product_id} details page')
 def open_product_page(context, product_id):
@@ -13,12 +15,15 @@ def open_product_page(context, product_id):
 
 @when('store product name')
 def store_product_name(context):
-    context.product_name = context.driver.find_element(*PRODUCT_NAME).text
-
+    # context.product_name = context.driver.find_element(*PRODUCT_NAME).text
+    context.app.search_results_page.store_product_name()
 
 @when('click on add 2 cart')
 def add_to_cart(context):
-    context.driver.find_element(*ADD_TO_CART_BTN).click()
+    context.app.search_results_page.add_to_cart()
+    #context.driver.find_element(*ADD_TO_CART_BTN).click()
+   #context.driver.wait.until(EC.element_to_be_clickable(NO_PROTECTION_BTN), message="BTN not available").click()
+    # context.app.cart_page.add_to_cart()
 
 @then('Varify users click through colors')
 def users_can_select_colors(context):

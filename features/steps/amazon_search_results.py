@@ -9,14 +9,17 @@ ALL_SEARCH_RESULTS = (By.CSS_SELECTOR, "[data-component-type='s-search-result']"
 
 @when('click on the first product')
 def click_first_result(context):
-    context.driver.find_element(*ALL_SEARCH_RESULTS_IMAGE).click()
+    # context.driver.find_element(*ALL_SEARCH_RESULTS_IMAGE).click()
+    context.app.search_results_page.click_first_result()
 
 
 @then('Verify search results shown for {expected_result}')
 def verify_search_results(context, expected_result):
-    actual_result = context.driver.find_element(*RESULT_TEXT).text
-    assert expected_result == actual_result, \
-        f'Error! Expected {expected_result} bot got actual {actual_result}'
+    # actual_result = context.driver.find_element(*RESULT_TEXT).text
+    # assert expected_result == actual_result, \
+    #     f'Error! Expected {expected_result} bot got actual {actual_result}'
+    context.app.search_results_page.verify_search_results(expected_result)
+
 
 @then('Verify search results has image and product name')
 def verify_image_and_product_name(context):

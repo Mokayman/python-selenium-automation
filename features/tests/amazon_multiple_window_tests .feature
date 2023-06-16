@@ -13,3 +13,5 @@ Feature: Amazon multiple window tests
     Given Open amazon main page
     When Click on Best Sellers menu
     Then Clicks on each top link and verifies that correct page opens
+
+
