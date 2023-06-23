@@ -9,7 +9,7 @@ class Signin(Page):
     def verify_sign_in_text(self):
         self.wait_for_url_contains('https://www.amazon.com/ap/signin?')
         expected_text = 'Sign in'
-        self.verify_element_text(expected_text, *self.SIGNIN_TEXT)
+        self.verify_element_text('Sign in', *self.SIGNIN_TEXT)
 
     def verify_email_field(self):
         self.verify_element_displayed(*self.EMAIL_FIELD)

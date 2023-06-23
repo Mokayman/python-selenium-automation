@@ -14,7 +14,8 @@ def varify_cart_count(context):
 
 @then("varify product name")
 def varify_product_name(context):
-    context.app.cart_page.varify_product_name()
+    partial_product_name = context.product_name_in_search[:30]
+    context.app.cart_page.varify_product_name(partial_product_name)
     # product_name_in_cart = context.driver.find_element(*PRODUCT_NAME).text
     # assert context.product_name[:30] in product_name_in_cart
 

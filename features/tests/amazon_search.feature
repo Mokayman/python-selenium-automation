@@ -21,3 +21,15 @@ Feature: Amazon Search tests
     When Click on cart icon
     Then Verify 'Your Amazon Cart is empty'. text present
 
+  Scenario: Verify users can search books department
+    Given Open amazon main page https://www.amazon.com/
+    When Select department books search-alias=stripbooks
+    When Search for faust
+    Then Verify correct department shown
+
+  Scenario: Verify users can search men department
+    Given Open amazon main page https://www.amazon.com/
+    When Select department men search-alias=fashion-mens
+    When Search for t-shirts
+    Then Verify correct men department is shown
+

@@ -24,3 +24,20 @@ def click_cart_icon(context):
     context.app.main_page.click_cart_icon()
 
 
+@when("Hover over language options")
+def hover_over_language_options(context):
+    context.app.header.hover_over_language_options()
+
+
+@when('Select department books {department_name}')
+def select_department(context, department_name):
+    context.app.header.select_department(department_name)
+
+
+@when('Select department men {department_name}')
+def select_department(context, department_name):
+    context.app.header.select_department(department_name)
+
+@then('Verify Spanish language is present')
+def verify_spanish_language(context):
+    context.app.header.verify_spanish_language()

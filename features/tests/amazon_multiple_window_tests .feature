@@ -10,7 +10,7 @@ Feature: Amazon multiple window tests
     And Verify user can close new window and switch back to original
 
   Scenario: User can click Best Sellers links
-    Given Open amazon main page
+    Given Open amazon main page https://www.amazon.com/
     When Click on Best Sellers menu
     Then Clicks on each top link and verifies that correct page opens
 

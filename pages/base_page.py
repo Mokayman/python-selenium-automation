@@ -8,7 +8,6 @@ class Page:
         self.driver = driver
         self.wait = WebDriverWait(self.driver, 15)
         self.base_url = 'https://www.amazon.com/'
-        self.product_name_in_search = ''
 
     def find_element(self, *locator):
         return self.driver.find_element(*locator)
@@ -24,13 +23,18 @@ class Page:
         e.clear()
         e.send_keys(text)
 
-    def open_url(self, url):
+    def open_url(self, url=''):
         self.driver.get(url)
 
     def verify_element_text(self, expected_text, *locator):
         actual_text = self.driver.find_element(*locator).text
         assert expected_text == actual_text, \
             f'Checking by locator {locator}. Expected {expected_text}, but got {actual_text}'
+
+    def verify_partial_text(self, expected_text, *locator):
+        actual_text = self.driver.find_element(*locator).text
+        assert expected_text in actual_text, \
+            f'Checking by locator {locator}. Expected text {expected_text} is not in {actual_text}'
 
     def verify_element_int(self, expected_int, *locator):
         # cart_count = int(context.driver.find_element(*CART_QUANTITY).text)
@@ -48,12 +52,11 @@ class Page:
         e = self.wait.until(EC.element_to_be_clickable(locator), message=f'Element not clickable by {locator}')
         e.click()
 
+    def verify_url_contains_query(self, query):
+        self.wait.until(EC.url_contains(query))
+
     def wait_for_element_appear(self, *locator):
-        self.wait.until(EC.presence_of_element_located(locator), message=f'Element not present by {locator}')
+        return self.wait.until(EC.presence_of_element_located(locator), message='Element not present')
 
-
-
-
-
-
-
+    def wait_for_element_disappear(self, *locator):
+        self.wait.until(EC.invisibility_of_element(locator))

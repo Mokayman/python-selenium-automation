@@ -5,6 +5,7 @@ RESULT_TEXT = (By.XPATH, "//span[@class='a-color-state a-text-bold']")
 ALL_SEARCH_RESULTS_IMAGE = (By.CSS_SELECTOR, "[data-component-type='s-search-result'] .s-image ")
 RESULTS_PRODUCT_NAME = (By.CSS_SELECTOR, "h2")
 ALL_SEARCH_RESULTS = (By.CSS_SELECTOR, "[data-component-type='s-search-result']")
+BOOKS_SUBMENU = (By.CSS_SELECTOR, "[data-category='books']")
 
 
 @when('click on the first product')
@@ -30,4 +31,13 @@ def verify_image_and_product_name(context):
         # print(f'* {product_name}')
         assert product_name != "", "No product name found"
         assert product.find_element(*ALL_SEARCH_RESULTS_IMAGE).is_displayed(), "image not found"
-#
+
+
+@then('Verify correct department shown')
+def verify_department(context):
+    context.app.search_results_page.verify_department()
+
+
+@then('Verify correct men department is shown')
+def verify_department(context):
+    context.app.search_results_page.verify_men_department()

@@ -19,13 +19,18 @@ Feature: Tests for main page UI
 
 
   Scenario: Amazon Popup sign in
-    Given Open amazon main page
+    Given Open amazon main page https://www.amazon.com/
     When Click sign in
     Then Verify 'Sign in' text is shown on the page
 
   Scenario: User see Amazon Popup sign in
-    Given Open amazon main page
+    Given Open amazon main page https://www.amazon.com/
     Then Verify sign in button is clickable
     When Wait for 5 seconds
     Then Verify sign in button is clickable
     Then Verify Sign in popup disappears
+
+  Scenario: User can see language options
+    Given Open amazon main page https://www.amazon.com/
+    When Hover over language options
+    Then Verify Spanish language is present

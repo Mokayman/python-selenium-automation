@@ -9,12 +9,17 @@ SEARCH_BTN = (By.ID, 'nav-search-submit-button')
 FOOTER_LINKS = (By.CSS_SELECTOR, '.navFooterMoreOnAmazon a')
 SIGN_IN_POPUP_BTN = (By.ID, "nav-signin-tooltip")
 
-@given('Open amazon main page')
-def open_main_page(context):
+@given('Open amazon main page {url}')
+def open_main_page(context, url):
     # context.driver.get('https://www.amazon.com/')
-    context.app.main_page.open_main_page()
+    context.app.main_page.open_page(url)
 
 
+
+#@given('Open amazon fashion page')
+#def open_fashion_page(context):
+#    # context.driver.get('https://www.amazon.com/')
+#    context.app.main_page.open_fashion_page()
 
 @when('Click Orders')
 def click_orders(context):
@@ -56,3 +61,5 @@ def verify_signin_btn_clickable(context):
 @then("Verify Sign in popup disappears")
 def verify_signin_disappears(context):
     context.driver.wait.until(EC.invisibility_of_element_located(SIGN_IN_POPUP_BTN)), 'Signin button does not disappear'
+
+
